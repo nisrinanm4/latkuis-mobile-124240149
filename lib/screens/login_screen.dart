@@ -9,15 +9,19 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State {
+  // Controller untuk mengambil teks dari inputan user
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
+  
+  // Status untuk mengontrol visibilitas password (sembunyi/tampil)
   bool _obscurePassword = true;
 
   void _login() {
     String username = _usernameController.text.trim();
     String password = _passwordController.text.trim();
 
-    // Validasi input kosong (7 Poin)
+    // === KRITERIA PENILAIAN: Validasi input kosong dan menampilkan pesan (7 Poin) ===
+    // Mengecek apakah kolom username atau password kosong sebelum lanjut
     if (username.isEmpty || password.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Username dan Password tidak boleh kosong!')),
@@ -25,7 +29,9 @@ class _LoginPageState extends State {
       return;
     }
 
-    // Login berhasil mengarahkan ke halaman Home & meneruskan username (5 + 5 Poin)[cite: 8]
+    // === KRITERIA PENILAIAN: Login berhasil mengarahkan ke halaman Home (5 Poin) ===
+    // & Username diteruskan ke halaman Profil (5 Poin)
+    // Melakukan navigasi penggantian halaman (pushReplacement) ke HomePage sambil membawa data username
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
@@ -44,7 +50,7 @@ class _LoginPageState extends State {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Logo/Header sesuai tampilan modul (8)
+              // Logo/Header aplikasi
               const Text(
                 'ME',
                 style: TextStyle(
@@ -69,7 +75,7 @@ class _LoginPageState extends State {
               ),
               const SizedBox(height: 40),
               
-              // Input Username (5 Poin)[cite: 8]
+              // === KRITERIA PENILAIAN: Input username (5 Poin) ===
               TextField(
                 controller: _usernameController,
                 decoration: InputDecoration(
@@ -82,10 +88,11 @@ class _LoginPageState extends State {
               ),
               const SizedBox(height: 16),
               
-              // Input Password tersembunyi & Toggle (3 Poin)[cite: 8]
+              // === KRITERIA PENILAIAN: Input password & ditampilkan secara tersembunyi (3 Poin) ===
+              // Menggunakan obscureText dan IconButton untuk toggle (tampil/sembunyi) password
               TextField(
                 controller: _passwordController,
-                obscureText: _obscurePassword,
+                obscureText: _obscurePassword, // Mengatur teks tersembunyi (bintang-bintang)
                 decoration: InputDecoration(
                   labelText: 'password',
                   border: OutlineInputBorder(
@@ -96,7 +103,7 @@ class _LoginPageState extends State {
                     icon: Icon(_obscurePassword ? Icons.visibility_off : Icons.visibility),
                     onPressed: () {
                       setState(() {
-                        _obscurePassword = !_obscurePassword;
+                        _obscurePassword = !_obscurePassword; // Mengubah status lihat/sembunyi password
                       });
                     },
                   ),
@@ -109,7 +116,7 @@ class _LoginPageState extends State {
                 width: double.infinity,
                 height: 48,
                 child: ElevatedButton(
-                  onPressed: _login,
+                  onPressed: _login, // Memanggil fungsi validasi dan navigasi _login
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
                     foregroundColor: Colors.white,

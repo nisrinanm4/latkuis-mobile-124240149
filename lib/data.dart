@@ -32,8 +32,7 @@ final List<Menu> menus = [
     name: "Mie Gacoan",
     category: "Mie",
     price: "Rp.12000",
-    image:
-        "https://images.unsplash.com/photo-1569718212165-3a8278d5f624",
+    image: "assets/gacoan.jpg",
     description:
         "Mie pedas dengan pilihan level dan cita rasa khas Gacoan.",
   ),
