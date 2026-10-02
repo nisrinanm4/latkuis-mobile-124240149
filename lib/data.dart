@@ -31,7 +31,7 @@ final List<Menu> menus = [
     id: 1,
     name: "Mie Gacoan",
     category: "Mie",
-    price: "Rp.12000",
+    price: "12000",
     image: "assets/gacoan.jpg",
     description:
         "Mie pedas dengan pilihan level dan cita rasa khas Gacoan.",
@@ -40,9 +40,9 @@ final List<Menu> menus = [
     id: 2,
     name: "Mie Hompimpa",
     category: "Mie",
-    price: "Rp.12000",
+    price: "12000",
     image:
-        "https://images.unsplash.com/photo-1552611052-33e04de081de",
+        "assets/gacoan.jpg",
     description:
         "Mie dengan cita rasa gurih dan pedas.",
   ),
@@ -50,9 +50,9 @@ final List<Menu> menus = [
     id: 3,
     name: "Mie Suit",
     category: "Mie",
-    price: "Rp.12000",
+    price: "12000",
     image:
-        "https://images.unsplash.com/photo-1569718212165-3a8278d5f624",
+        "assets/gacoan.jpg",
     description:
         "Mie dengan cita rasa gurih yang lebih ringan.",
   ),
@@ -60,9 +60,9 @@ final List<Menu> menus = [
     id: 4,
     name: "Udang Keju",
     category: "Dimsum",
-    price: "Rp.12000",
+    price: "12000",
     image:
-        "https://images.unsplash.com/photo-1496116218417-1a781b1c416c",
+        "assets/photo.jpg",
     description:
         "Dimsum udang dengan isian keju yang gurih.",
   ),
@@ -70,9 +70,9 @@ final List<Menu> menus = [
     id: 5,
     name: "Udang Rambutan",
     category: "Dimsum",
-    price: "Rp.12000",
+    price: "12000",
     image:
-        "https://images.unsplash.com/photo-1496116218417-1a781b1c416c",
+        "assets/rambutan.jpg",
     description:
         "Dimsum udang dengan balutan kulit renyah.",
   ),
@@ -80,9 +80,9 @@ final List<Menu> menus = [
     id: 6,
     name: "Pangsit Goreng",
     category: "Dimsum",
-    price: "Rp.12000",
+    price: "12000",
     image:
-        "https://images.unsplash.com/photo-1496116218417-1a781b1c416c",
+        "assets/pangsit.jpg",
     description:
         "Pangsit goreng dengan tekstur renyah dan gurih.",
   ),
@@ -90,9 +90,9 @@ final List<Menu> menus = [
     id: 7,
     name: "Es Gobak Sodor",
     category: "Minuman",
-    price: "Rp.9000",
+    price: "9000",
     image:
-        "https://images.unsplash.com/photo-1556679343-c7306c1976bc",
+        "assets/es gobak.jpg",
     description:
         "Minuman segar dengan rasa manis dan menyegarkan.",
   ),
@@ -100,9 +100,9 @@ final List<Menu> menus = [
     id: 8,
     name: "Es Teklek",
     category: "Minuman",
-    price: "Rp.9000",
+    price: "9000",
     image:
-        "https://images.unsplash.com/photo-1556679343-c7306c1976bc",
+        "assets/es teklek.jpg",
     description:
         "Minuman segar yang cocok dinikmati bersama menu Gacoan.",
   ),
@@ -110,9 +110,9 @@ final List<Menu> menus = [
     id: 9,
     name: "Es Tea",
     category: "Minuman",
-    price: "Rp.6000",
+    price: "6000",
     image:
-        "https://images.unsplash.com/photo-1556679343-c7306c1976bc",
+        "assets/es tea.jpg",
     description:
         "Es teh segar dengan rasa manis dan menyegarkan.",
   ),

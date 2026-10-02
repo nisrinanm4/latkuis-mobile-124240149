@@ -5,7 +5,7 @@ class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  State createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State {
@@ -20,8 +20,7 @@ class _LoginPageState extends State {
     String username = _usernameController.text.trim();
     String password = _passwordController.text.trim();
 
-    // === KRITERIA PENILAIAN: Validasi input kosong dan menampilkan pesan (7 Poin) ===
-    // Mengecek apakah kolom username atau password kosong sebelum lanjut
+    // === VALIDASI INPUT KOSONG ===
     if (username.isEmpty || password.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Username dan Password tidak boleh kosong!')),
@@ -29,9 +28,15 @@ class _LoginPageState extends State {
       return;
     }
 
-    // === KRITERIA PENILAIAN: Login berhasil mengarahkan ke halaman Home (5 Poin) ===
-    // & Username diteruskan ke halaman Profil (5 Poin)
-    // Melakukan navigasi penggantian halaman (pushReplacement) ke HomePage sambil membawa data username
+    // === VALIDASI AKUN SPESIFIK ===
+    if (username != 'admingacoan' || password != '1221') {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Username atau Password salah! (Gunakan admingacoan / 1221)')),
+      );
+      return; 
+    }
+
+    // === NAVIGASI KE HOME & KIRIM USERNAME ===
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
@@ -50,36 +55,30 @@ class _LoginPageState extends State {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Logo/Header aplikasi
-              const Text(
-                'ME',
-                style: TextStyle(
-                  fontSize: 24, 
-                  fontWeight: FontWeight.bold, 
-                  color: Colors.pink
-                ),
-              ),
-              const Text(
-                'GACOAN',
-                style: TextStyle(
-                  fontSize: 36, 
-                  fontWeight: FontWeight.bold, 
+              // === MENGGANTI TEKS DENGAN LOGO GAMBAR DARI ASSETS ===
+              Image.asset(
+                'assets/logo.png', 
+                width: 200,
+                height: 200,
+                fit: BoxFit.contain,
+                errorBuilder: (context, error, stackTrace) => const Icon(
+                  Icons.fastfood,
+                  size: 80,
                   color: Colors.blue,
-                  letterSpacing: 2,
                 ),
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 12),
               const Text(
                 'Selamat Datang di Gacoan',
                 style: TextStyle(color: Colors.grey, fontSize: 14),
               ),
               const SizedBox(height: 40),
               
-              // === KRITERIA PENILAIAN: Input username (5 Poin) ===
+              // Input Username
               TextField(
                 controller: _usernameController,
                 decoration: InputDecoration(
-                  labelText: 'username',
+                  labelText: 'Username',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -88,13 +87,12 @@ class _LoginPageState extends State {
               ),
               const SizedBox(height: 16),
               
-              // === KRITERIA PENILAIAN: Input password & ditampilkan secara tersembunyi (3 Poin) ===
-              // Menggunakan obscureText dan IconButton untuk toggle (tampil/sembunyi) password
+              // Input Password dengan tombol lihat/sembunyi
               TextField(
                 controller: _passwordController,
-                obscureText: _obscurePassword, // Mengatur teks tersembunyi (bintang-bintang)
+                obscureText: _obscurePassword, 
                 decoration: InputDecoration(
-                  labelText: 'password',
+                  labelText: 'Password',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -103,7 +101,7 @@ class _LoginPageState extends State {
                     icon: Icon(_obscurePassword ? Icons.visibility_off : Icons.visibility),
                     onPressed: () {
                       setState(() {
-                        _obscurePassword = !_obscurePassword; // Mengubah status lihat/sembunyi password
+                        _obscurePassword = !_obscurePassword; 
                       });
                     },
                   ),
@@ -116,7 +114,7 @@ class _LoginPageState extends State {
                 width: double.infinity,
                 height: 48,
                 child: ElevatedButton(
-                  onPressed: _login, // Memanggil fungsi validasi dan navigasi _login
+                  onPressed: _login, 
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
                     foregroundColor: Colors.white,
